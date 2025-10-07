@@ -14,6 +14,11 @@ through the rebuttal window.
   macros such as `\RR`) using KaTeX through the `markdown-it-texmath` plugin.
 - **Tables and listings** &mdash; Render Markdown and LaTeX-style tables plus
   syntax-highlighted code blocks via Highlight.js.
+- **Evidence figure trays** &mdash; Each reviewer lane includes ready-to-swap
+  figure placeholders so you can drop in plots or diagrams that support the
+  rebuttal narrative.
+- **Reviewer quick links** &mdash; Use the jump bar to open any reviewer lane
+  instantly without scrolling.
 - **Quick copy** &mdash; Export any response with a single click using the copy
   buttons in each reviewer card.
 - **Discussion log** &mdash; Capture clarifications or internal decisions in a
@@ -49,6 +54,8 @@ configuration is required for GitHub Pages.
 - Duplicate reviewer cards in `index.html` to track additional discussions.
 - Update the placeholder Markdown to match your paper details and reviewer
   comments.
+- Replace the evidence figure data URIs with local paths (e.g., `figures/plot.png`)
+  to embed your own visuals in each reviewer lane.
 - Adjust the appearance in `styles.css` if you prefer a different theme.
 
 ## Acknowledgements

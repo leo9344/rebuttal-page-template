@@ -41,6 +41,15 @@
       </div>
     </header>
 
+    <nav class="reviewer-nav" aria-label="Reviewer quick links">
+      <div class="container">
+        <span class="nav-label">Jump to:</span>
+        <a class="nav-link" href="#reviewer-1">Reviewer 1</a>
+        <a class="nav-link" href="#reviewer-2">Reviewer 2</a>
+        <a class="nav-link" href="#reviewer-3">Reviewer 3</a>
+      </div>
+    </nav>
+
     <main class="container">
       <section class="overview">
         <article class="card">
@@ -79,7 +88,7 @@
       <section class="workspace">
         <h2 class="section-title">Reviewer Threads</h2>
         <div class="grid">
-          <article class="card" data-reviewer="Reviewer 1">
+          <article class="card" id="reviewer-1" data-reviewer="Reviewer 1">
             <header class="card-header">
               <div>
                 <h3>Reviewer 1 &mdash; Clarity</h3>
@@ -126,9 +135,31 @@ with torch.autocast("cuda"):
 - *Next step*: Draft 2-sentence clarification for Appendix B.
 </textarea>
             </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Swap the placeholders with final attention maps or diagram screenshots.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2716%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2732%27%20y%3D%2732%27%20width%3D%27336%27%20height%3D%27196%27%20rx%3D%2712%27%20fill%3D%27%23e2e8f0%27/%3E%0A%3Cpath%20d%3D%27M48%20186%20C96%20146%20144%20146%20192%20186%20S288%20226%20336%20186%27%20fill%3D%27none%27%20stroke%3D%27%2363748b%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Ccircle%20cx%3D%27128%27%20cy%3D%27120%27%20r%3D%2738%27%20fill%3D%27%233b82f6%27%20opacity%3D%270.35%27/%3E%0A%3Ccircle%20cx%3D%27208%27%20cy%3D%27120%27%20r%3D%2726%27%20fill%3D%27%2394a3b8%27%20opacity%3D%270.45%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27232%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23566a86%27%3EReplace%20with%20analysis%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for attention rollout figure"
+                  />
+                  <figcaption>Figure A. Attention rollout visualization &mdash; replace the image source with your latest heatmap.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for comparative bar chart"
+                  />
+                  <figcaption>Figure B. Summary graphic &mdash; drop a notation table or diagram snapshot for quick reference.</figcaption>
+                </figure>
+              </div>
+            </div>
           </article>
 
-          <article class="card" data-reviewer="Reviewer 2">
+          <article class="card" id="reviewer-2" data-reviewer="Reviewer 2">
             <header class="card-header">
               <div>
                 <h3>Reviewer 2 &mdash; Experimental Rigor</h3>
@@ -180,9 +211,31 @@ The coefficient of determination improved from 0.61 to 0.84.
 - *Action*: Prepare small table comparing GPU hours for each configuration.
 </textarea>
             </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Pin revised scaling curves or compute budget charts alongside the response.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2740%27%20y%3D%2744%27%20width%3D%27320%27%20height%3D%27172%27%20rx%3D%2714%27%20fill%3D%27white%27%20stroke%3D%27%23cbd5f5%27%20stroke-width%3D%274%27%20stroke-dasharray%3D%2714%2010%27/%3E%0A%3Cpolyline%20points%3D%2760%2C176%20132%2C108%20204%2C146%20276%2C92%20348%2C118%27%20fill%3D%27none%27%20stroke%3D%27%23f97316%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Cpolyline%20points%3D%2760%2C198%20132%2C164%20204%2C188%20276%2C134%20348%2C168%27%20fill%3D%27none%27%20stroke%3D%27%236366f1%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.6%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3EDrop%20final%20plot%20here%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for scaling curve plot"
+                  />
+                  <figcaption>Figure A. Updated scaling curve &mdash; replace with the refitted regression or sweep plot.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for compute budget bars"
+                  />
+                  <figcaption>Figure B. Compute budget comparison &mdash; insert GPU-hour bars or resource summary snapshots.</figcaption>
+                </figure>
+              </div>
+            </div>
           </article>
 
-          <article class="card" data-reviewer="Reviewer 3">
+          <article class="card" id="reviewer-3" data-reviewer="Reviewer 3">
             <header class="card-header">
               <div>
                 <h3>Reviewer 3 &mdash; Baselines</h3>
@@ -222,6 +275,28 @@ Thank you for pointing out the missing contrastive baseline. We have now include
 - *Idea*: Offer reproducibility checklist with seeds and configs as supplementary.
 - *Reminder*: Confirm whether reviewer wants per-class metrics breakdown.
 </textarea>
+            </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Stage baseline comparisons or reproducibility diagrams for quick copy-paste into the rebuttal.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for baseline comparison chart"
+                  />
+                  <figcaption>Figure A. Baseline comparison chart &mdash; trade this graphic for the updated accuracy table snapshot.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2716%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2732%27%20y%3D%2732%27%20width%3D%27336%27%20height%3D%27196%27%20rx%3D%2712%27%20fill%3D%27%23e2e8f0%27/%3E%0A%3Cpath%20d%3D%27M48%20186%20C96%20146%20144%20146%20192%20186%20S288%20226%20336%20186%27%20fill%3D%27none%27%20stroke%3D%27%2363748b%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Ccircle%20cx%3D%27128%27%20cy%3D%27120%27%20r%3D%2738%27%20fill%3D%27%233b82f6%27%20opacity%3D%270.35%27/%3E%0A%3Ccircle%20cx%3D%27208%27%20cy%3D%27120%27%20r%3D%2726%27%20fill%3D%27%2394a3b8%27%20opacity%3D%270.45%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27232%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23566a86%27%3EReplace%20with%20analysis%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for reproducibility workflow figure"
+                  />
+                  <figcaption>Figure B. Reproducibility workflow &mdash; drop diagrams or checklists showing released scripts/configs.</figcaption>
+                </figure>
+              </div>
             </div>
           </article>
         </div>
