@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebuttal Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312283f'/%3E%3Cpath d='M18 34l9 9 19-22' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <h1>Rebuttal Workspace</h1>
+        <p class="lead">
+          Organize responses, clarify experiments, and collaborate with co-authors
+          during the rebuttal window.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="overview">
+        <article class="card">
+          <h2>Project Overview</h2>
+          <div id="overview-preview" class="markdown-preview"></div>
+          <textarea
+            id="overview-editor"
+            class="markdown-editor"
+            aria-label="Overview markdown editor"
+          ># Paper Snapshot
+
+- **Title**: Efficient Multimodal Transformers for Structured Reasoning
+- **ID**: Paper #137
+- **Deadline**: Feb 15, 23:59 PST
+- **Task Force**: Alice, Bob, Chen
+
+> Keep this section up to date with key facts and a succinct summary.
+
+## Key Links
+
+| Resource | URL |
+| --- | --- |
+| Paper PDF | [arXiv 2410.12345](https://arxiv.org/abs/2410.12345) |
+| Code Repo | [github.com/example/reasoning-transformer](https://github.com/example/reasoning-transformer) |
+| Dataset | Internal S3 bucket |
+
+### Highlight
+
+- Additional ablations ready to upload
+- Reviewer 2 concerned with scaling law extrapolation
+- Reviewer 3 asked for stronger baselines
+</textarea>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <h2 class="section-title">Reviewer Threads</h2>
+        <div class="grid">
+          <article class="card" data-reviewer="Reviewer 1">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 1 &mdash; Clarity</h3>
+                <p class="meta">Focus: Method explanation, notation consistency</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 1 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 1 markdown editor">
+## Planned Response
+
+Thank you for highlighting the missing intuition behind Equation (4). To clarify:
+
+1. We extend the factorized attention mechanism from Eq. (2) by allowing modality-specific temperatures \(\tau_m\).
+2. The feature projection matrices \(W_m\) remain shared, so the update does not increase parameter count.
+
+```python
+# Listing used in the supplement
+with torch.autocast("cuda"):
+    logits = fusion(query, keys, values, temperature=per_modality_tau)
+```
+
+### Next Steps
+
+- [x] Produce a small visualization of attention maps.
+- [ ] Add the explanation to Section 3.2 and upload to OpenReview.
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Log clarifications, synchronous chat notes, or reviewer back-and-forth.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 1 ongoing conversation editor"
+              >### Conversation Log
+
+- *2025-02-02*: Reviewer asked whether the intuition section will include gradient flow comments.
+- *Next step*: Draft 2-sentence clarification for Appendix B.
+</textarea>
+            </div>
+          </article>
+
+          <article class="card" data-reviewer="Reviewer 2">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 2 &mdash; Experimental Rigor</h3>
+                <p class="meta">Focus: Scaling laws, compute budget, baselines</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 2 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 2 markdown editor">
+## Scaling Law Clarification
+
+We re-fitted the scaling law using the expanded dataset (n=12) and obtained:
+
+$$
+\mathcal{L}(C) = 0.21 C^{-0.37} + 0.48
+$$
+
+The coefficient of determination improved from 0.61 to 0.84.
+
+| Compute (PF-days) | Validation Error |
+| ---: | ---: |
+| 0.5 | 0.92 |
+| 1.0 | 0.71 |
+| 2.0 | 0.58 |
+| 4.0 | 0.52 |
+
+### Checklist
+
+- [x] Attach updated ablation table in the supplement
+- [ ] Provide clarification on hyperparameter sweep budget
+- [ ] Double-check \(\mathbb{E}[L]\) notation consistency
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Track reviewer replies, side calculations, or meeting notes.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 2 ongoing conversation editor"
+              >### Conversation Log
+
+- *Pending*: Reviewer awaiting clarification on compute ceiling for sweep.
+- *Action*: Prepare small table comparing GPU hours for each configuration.
+</textarea>
+            </div>
+          </article>
+
+          <article class="card" data-reviewer="Reviewer 3">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 3 &mdash; Baselines</h3>
+                <p class="meta">Focus: Additional comparisons, reproducibility</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 3 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 3 markdown editor">
+## Addressing Baseline Concerns
+
+Thank you for pointing out the missing contrastive baseline. We have now included **Co-BERT** and **Unified-CLIP**. The updated Table 6 in the supplement shows our method outperforming both by 2.1% and 3.4% absolute accuracy, respectively.
+
+> We will release the training script with deterministic seeding to ensure reproducibility.
+
+#### Pending Items
+
+1. Upload the extended results table.
+2. Provide learning rate sweep details.
+3. Summarize compute for new baselines in Appendix D.
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Use this to coordinate longer-term follow-ups or external inquiries.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 3 ongoing conversation editor"
+              >### Conversation Log
+
+- *Idea*: Offer reproducibility checklist with seeds and configs as supplementary.
+- *Reminder*: Confirm whether reviewer wants per-class metrics breakdown.
+</textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="discussion">
+        <h2 class="section-title">Discussion Notes</h2>
+        <div class="card">
+          <div class="markdown-preview"></div>
+          <textarea class="markdown-editor" aria-label="Discussion markdown editor">
+### Internal Discussion Log
+
+- Coordinate with **Chen** to finish the synthetic data ablation.
+- Schedule a rehearsal for the 1-minute summary video.
+
+> Use this panel to capture quick clarifications or discussion items during the rebuttal sprint.
+</textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container">
+        <p>
+          Built with ❤️ for fast-paced rebuttal workflows. Export sections as Markdown
+          or copy responses directly into OpenReview.
+        </p>
+      </div>
+    </footer>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it-footnote@3.0.3/dist/markdown-it-footnote.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.js"
+    ></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
