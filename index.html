@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebuttal Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312283f'/%3E%3Cpath d='M18 34l9 9 19-22' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <h1>Rebuttal Workspace</h1>
+        <p class="lead">
+          Organize responses, clarify experiments, and collaborate with co-authors
+          during the rebuttal window.
+        </p>
+      </div>
+    </header>
+
+    <nav class="reviewer-nav" aria-label="Reviewer quick links">
+      <div class="container">
+        <span class="nav-label">Jump to:</span>
+        <a class="nav-link" href="#reviewer-1">Reviewer 1</a>
+        <a class="nav-link" href="#reviewer-2">Reviewer 2</a>
+        <a class="nav-link" href="#reviewer-3">Reviewer 3</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="overview">
+        <article class="card">
+          <h2>Project Overview</h2>
+          <div id="overview-preview" class="markdown-preview"></div>
+          <textarea
+            id="overview-editor"
+            class="markdown-editor"
+            aria-label="Overview markdown editor"
+          ># Paper Snapshot
+
+- **Title**: Efficient Multimodal Transformers for Structured Reasoning
+- **ID**: Paper #137
+- **Deadline**: Feb 15, 23:59 PST
+- **Task Force**: Alice, Bob, Chen
+
+> Keep this section up to date with key facts and a succinct summary.
+
+## Key Links
+
+| Resource | URL |
+| --- | --- |
+| Paper PDF | [arXiv 2410.12345](https://arxiv.org/abs/2410.12345) |
+| Code Repo | [github.com/example/reasoning-transformer](https://github.com/example/reasoning-transformer) |
+| Dataset | Internal S3 bucket |
+
+### Highlight
+
+- Additional ablations ready to upload
+- Reviewer 2 concerned with scaling law extrapolation
+- Reviewer 3 asked for stronger baselines
+</textarea>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <h2 class="section-title">Reviewer Threads</h2>
+        <div class="grid">
+          <article class="card" id="reviewer-1" data-reviewer="Reviewer 1">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 1 &mdash; Clarity</h3>
+                <p class="meta">Focus: Method explanation, notation consistency</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 1 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 1 markdown editor">
+## Planned Response
+
+Thank you for highlighting the missing intuition behind Equation (4). To clarify:
+
+1. We extend the factorized attention mechanism from Eq. (2) by allowing modality-specific temperatures \(\tau_m\).
+2. The feature projection matrices \(W_m\) remain shared, so the update does not increase parameter count.
+
+```python
+# Listing used in the supplement
+with torch.autocast("cuda"):
+    logits = fusion(query, keys, values, temperature=per_modality_tau)
+```
+
+### Next Steps
+
+- [x] Produce a small visualization of attention maps.
+- [ ] Add the explanation to Section 3.2 and upload to OpenReview.
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Log clarifications, synchronous chat notes, or reviewer back-and-forth.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 1 ongoing conversation editor"
+              >### Conversation Log
+
+- *2025-02-02*: Reviewer asked whether the intuition section will include gradient flow comments.
+- *Next step*: Draft 2-sentence clarification for Appendix B.
+</textarea>
+            </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Swap the placeholders with final attention maps or diagram screenshots.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2716%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2732%27%20y%3D%2732%27%20width%3D%27336%27%20height%3D%27196%27%20rx%3D%2712%27%20fill%3D%27%23e2e8f0%27/%3E%0A%3Cpath%20d%3D%27M48%20186%20C96%20146%20144%20146%20192%20186%20S288%20226%20336%20186%27%20fill%3D%27none%27%20stroke%3D%27%2363748b%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Ccircle%20cx%3D%27128%27%20cy%3D%27120%27%20r%3D%2738%27%20fill%3D%27%233b82f6%27%20opacity%3D%270.35%27/%3E%0A%3Ccircle%20cx%3D%27208%27%20cy%3D%27120%27%20r%3D%2726%27%20fill%3D%27%2394a3b8%27%20opacity%3D%270.45%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27232%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23566a86%27%3EReplace%20with%20analysis%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for attention rollout figure"
+                  />
+                  <figcaption>Figure A. Attention rollout visualization &mdash; replace the image source with your latest heatmap.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for comparative bar chart"
+                  />
+                  <figcaption>Figure B. Summary graphic &mdash; drop a notation table or diagram snapshot for quick reference.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="reviewer-2" data-reviewer="Reviewer 2">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 2 &mdash; Experimental Rigor</h3>
+                <p class="meta">Focus: Scaling laws, compute budget, baselines</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 2 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 2 markdown editor">
+## Scaling Law Clarification
+
+We re-fitted the scaling law using the expanded dataset (n=12) and obtained:
+
+$$
+\mathcal{L}(C) = 0.21 C^{-0.37} + 0.48
+$$
+
+The coefficient of determination improved from 0.61 to 0.84.
+
+| Compute (PF-days) | Validation Error |
+| ---: | ---: |
+| 0.5 | 0.92 |
+| 1.0 | 0.71 |
+| 2.0 | 0.58 |
+| 4.0 | 0.52 |
+
+### Checklist
+
+- [x] Attach updated ablation table in the supplement
+- [ ] Provide clarification on hyperparameter sweep budget
+- [ ] Double-check \(\mathbb{E}[L]\) notation consistency
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Track reviewer replies, side calculations, or meeting notes.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 2 ongoing conversation editor"
+              >### Conversation Log
+
+- *Pending*: Reviewer awaiting clarification on compute ceiling for sweep.
+- *Action*: Prepare small table comparing GPU hours for each configuration.
+</textarea>
+            </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Pin revised scaling curves or compute budget charts alongside the response.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2740%27%20y%3D%2744%27%20width%3D%27320%27%20height%3D%27172%27%20rx%3D%2714%27%20fill%3D%27white%27%20stroke%3D%27%23cbd5f5%27%20stroke-width%3D%274%27%20stroke-dasharray%3D%2714%2010%27/%3E%0A%3Cpolyline%20points%3D%2760%2C176%20132%2C108%20204%2C146%20276%2C92%20348%2C118%27%20fill%3D%27none%27%20stroke%3D%27%23f97316%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Cpolyline%20points%3D%2760%2C198%20132%2C164%20204%2C188%20276%2C134%20348%2C168%27%20fill%3D%27none%27%20stroke%3D%27%236366f1%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.6%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3EDrop%20final%20plot%20here%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for scaling curve plot"
+                  />
+                  <figcaption>Figure A. Updated scaling curve &mdash; replace with the refitted regression or sweep plot.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for compute budget bars"
+                  />
+                  <figcaption>Figure B. Compute budget comparison &mdash; insert GPU-hour bars or resource summary snapshots.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="reviewer-3" data-reviewer="Reviewer 3">
+            <header class="card-header">
+              <div>
+                <h3>Reviewer 3 &mdash; Baselines</h3>
+                <p class="meta">Focus: Additional comparisons, reproducibility</p>
+              </div>
+              <button class="copy-button" type="button" aria-label="Copy reviewer 3 response">
+                Copy Markdown
+              </button>
+            </header>
+            <div class="thread-block">
+              <div class="markdown-preview"></div>
+              <textarea class="markdown-editor" aria-label="Reviewer 3 markdown editor">
+## Addressing Baseline Concerns
+
+Thank you for pointing out the missing contrastive baseline. We have now included **Co-BERT** and **Unified-CLIP**. The updated Table 6 in the supplement shows our method outperforming both by 2.1% and 3.4% absolute accuracy, respectively.
+
+> We will release the training script with deterministic seeding to ensure reproducibility.
+
+#### Pending Items
+
+1. Upload the extended results table.
+2. Provide learning rate sweep details.
+3. Summarize compute for new baselines in Appendix D.
+</textarea>
+            </div>
+            <div class="thread-block thread-followup">
+              <div class="thread-followup-header">
+                <h4>Ongoing Conversation</h4>
+                <p class="hint">Use this to coordinate longer-term follow-ups or external inquiries.</p>
+              </div>
+              <div class="markdown-preview"></div>
+              <textarea
+                class="markdown-editor"
+                aria-label="Reviewer 3 ongoing conversation editor"
+              >### Conversation Log
+
+- *Idea*: Offer reproducibility checklist with seeds and configs as supplementary.
+- *Reminder*: Confirm whether reviewer wants per-class metrics breakdown.
+</textarea>
+            </div>
+            <div class="thread-media">
+              <div class="thread-media-header">
+                <h4>Evidence Figures</h4>
+                <p class="hint">Stage baseline comparisons or reproducibility diagrams for quick copy-paste into the rebuttal.</p>
+              </div>
+              <div class="figure-grid">
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2718%27%20fill%3D%27%23f1f5f9%27/%3E%0A%3Cg%20stroke%3D%27%2394a3b8%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%3Crect%20x%3D%2732%27%20y%3D%2748%27%20width%3D%27336%27%20height%3D%27160%27%20fill%3D%27white%27/%3E%0A%20%20%3Cline%20x1%3D%2784%27%20y1%3D%2788%27%20x2%3D%2784%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27152%27%20y1%3D%2788%27%20x2%3D%27152%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27220%27%20y1%3D%2788%27%20x2%3D%27220%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%20%20%3Cline%20x1%3D%27288%27%20y1%3D%2788%27%20x2%3D%27288%27%20y2%3D%27208%27%20stroke-dasharray%3D%2710%2012%27/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%27%233b82f6%27%20opacity%3D%270.45%27%3E%0A%20%20%3Crect%20x%3D%2752%27%20y%3D%27148%27%20width%3D%2752%27%20height%3D%2760%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27120%27%20y%3D%27118%27%20width%3D%2752%27%20height%3D%2790%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27188%27%20y%3D%2798%27%20width%3D%2752%27%20height%3D%27110%27%20rx%3D%278%27/%3E%0A%20%20%3Crect%20x%3D%27256%27%20y%3D%2778%27%20width%3D%2752%27%20height%3D%27130%27%20rx%3D%278%27/%3E%0A%3C/g%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27236%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23475569%27%3ESwap%20with%20study%20figure%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for baseline comparison chart"
+                  />
+                  <figcaption>Figure A. Baseline comparison chart &mdash; trade this graphic for the updated accuracy table snapshot.</figcaption>
+                </figure>
+                <figure class="rebuttal-figure">
+                  <img
+                    src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20400%20260%27%3E%0A%3Crect%20width%3D%27400%27%20height%3D%27260%27%20rx%3D%2716%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2732%27%20y%3D%2732%27%20width%3D%27336%27%20height%3D%27196%27%20rx%3D%2712%27%20fill%3D%27%23e2e8f0%27/%3E%0A%3Cpath%20d%3D%27M48%20186%20C96%20146%20144%20146%20192%20186%20S288%20226%20336%20186%27%20fill%3D%27none%27%20stroke%3D%27%2363748b%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27/%3E%0A%3Ccircle%20cx%3D%27128%27%20cy%3D%27120%27%20r%3D%2738%27%20fill%3D%27%233b82f6%27%20opacity%3D%270.35%27/%3E%0A%3Ccircle%20cx%3D%27208%27%20cy%3D%27120%27%20r%3D%2726%27%20fill%3D%27%2394a3b8%27%20opacity%3D%270.45%27/%3E%0A%3Ctext%20x%3D%27200%27%20y%3D%27232%27%20text-anchor%3D%27middle%27%20font-family%3D%27Inter%2C%20Arial%2C%20sans-serif%27%20font-size%3D%2718%27%20fill%3D%27%23566a86%27%3EReplace%20with%20analysis%3C/text%3E%0A%3C/svg%3E"
+                    alt="Placeholder for reproducibility workflow figure"
+                  />
+                  <figcaption>Figure B. Reproducibility workflow &mdash; drop diagrams or checklists showing released scripts/configs.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="discussion">
+        <h2 class="section-title">Discussion Notes</h2>
+        <div class="card">
+          <div class="markdown-preview"></div>
+          <textarea class="markdown-editor" aria-label="Discussion markdown editor">
+### Internal Discussion Log
+
+- Coordinate with **Chen** to finish the synthetic data ablation.
+- Schedule a rehearsal for the 1-minute summary video.
+
+> Use this panel to capture quick clarifications or discussion items during the rebuttal sprint.
+</textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container">
+        <p>
+          Built with ❤️ for fast-paced rebuttal workflows. Export sections as Markdown
+          or copy responses directly into OpenReview.
+        </p>
+      </div>
+    </footer>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it-footnote@3.0.3/dist/markdown-it-footnote.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.js"
+    ></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
